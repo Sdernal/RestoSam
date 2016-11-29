@@ -14,12 +14,6 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
-
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_second);
-        layout.addView(textView);
     }
 }
