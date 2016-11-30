@@ -3,7 +3,10 @@
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="button_text">Выбрать ресторан</string>
-
+    <string name="menu1">Основные блюда</string>
+    <string name="menu2">Вторые блюда</string>
+    <string name="menu3">Десерты</string>
+    <string name="menu4">Напитки</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

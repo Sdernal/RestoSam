@@ -9,14 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src= "@drawable/kek" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:id="@+id/choose_button"
         android:text="@string/button_text"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:textColorLink="#00ff00"
-        android:onClick="OnButtonClick"/>
+        android:background="@color/buttonColor"
+        android:onClick="OnButtonClick"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp"
+        android:id="@+id/menu_button"
+        android:text="Пример меню"
+        android:background="@color/buttonColor"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="#000000" />
 </LinearLayout>
