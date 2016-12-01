@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 
     public void OnButtonClick(View view) {
-        Intent intent = new Intent(this, SecondActivity.class);
+        Intent intent = new Intent(this, RestaurantActivity.class);
         startActivity(intent);
     }
 

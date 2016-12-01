@@ -7,6 +7,9 @@
     <string name="menu2">Вторые блюда</string>
     <string name="menu3">Десерты</string>
     <string name="menu4">Напитки</string>
+    <string name="search_restaurant_text">Введите название ресторана</string>
+    <string name="extend_search_text"><u>Расширенный поиск ресторана</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_restaurant">RestaurantActivity</string>
 </resources>
