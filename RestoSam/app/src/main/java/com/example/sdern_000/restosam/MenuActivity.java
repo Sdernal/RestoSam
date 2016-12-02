@@ -14,99 +14,62 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends AppCompatActivity {
 
-    // названия компаний (групп)
+    final String GROUP_NAME = "groupName";
+    final String DISH_NAME = "dishName";
+    final String DISH_PRICE = "dishPrice";
+    final String DISH_PICT = "dishPict";
+
     String[] groups = new String[] {"Основные блюда", "Вторые блюда", "Десерты"};
 
-    // названия телефонов (элементов)
+
     String[] FirstDishes = new String[] {"Борщ", "Солянка", "Суп-пюре", "Суп куриный"};
+    Integer[] FirstDishesPrices = new Integer[] {45,34,60,42};
+    Integer[] FirstDishesPictures = new Integer[] {R.drawable.grill,R.drawable.chicks,R.drawable.foodie,R.drawable.circles};
     String[] SecondDishes = new String[] {"Гречка с котлетами", "Жареная картошка", "Плов"};
-    String[] Dessert = new String[] {"Печенье", "Вафли", "Мед", "Тор"};
+    Integer[] SecondDishesPrices = new Integer[] {98,67,42};
+    Integer[] SecondDishesPictures = new Integer[] {R.drawable.kek,R.drawable.lol,R.drawable.seafood};
+    String[] Dessert = new String[] {"Печенье", "Вафли", "Мед", "Торт"};
+    Integer[] DessertPrices = new Integer[] {41,34,61,32};
+    Integer[] DessertPictures = new Integer[] {R.drawable.chicks, R.drawable.circles, R.drawable.foodie, R.drawable.grill};
 
-    // коллекция для групп
     ArrayList<Map<String, String>> groupData;
-
-    // коллекция для элементов одной группы
-    ArrayList<Map<String, String>> childDataItem;
-
-    // общая коллекция для коллекций элементов
-    ArrayList<ArrayList<Map<String, String>>> childData;
-    // в итоге получится childData = ArrayList<childDataItem>
-
-    // список атрибутов группы или элемента
-    Map<String, String> m;
+    ArrayList<ArrayList<Map<String, Object>>> childData;
 
     ExpandableListView elvMain;
-
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.menu_header);
         setContentView(R.layout.activity_menu);
 
-        // заполняем коллекцию групп из массива с названиями групп
-        groupData = new ArrayList<Map<String, String>>();
-        for (String group : groups) {
-            // заполняем список атрибутов для каждой группы
-            m = new HashMap<String, String>();
-            m.put("groupName", group); // имя компании
-            groupData.add(m);
+        Menu menu = new Menu(groups);
+        for (int i = 0 ; i < FirstDishes.length; i++) {
+            Dish dish = new Dish(FirstDishes[i], FirstDishesPrices[i], FirstDishesPictures[i] );
+            menu.AddDish("Основные блюда", dish);
+        }
+        for (int i = 0 ; i < SecondDishes.length; i++) {
+            Dish dish = new Dish(SecondDishes[i], SecondDishesPrices[i], SecondDishesPictures[i] );
+            menu.AddDish("Вторые блюда", dish);
+        }
+        for (int i = 0 ; i < Dessert.length; i++) {
+            Dish dish = new Dish(Dessert[i], DessertPrices[i], DessertPictures[i] );
+            menu.AddDish("Десерты", dish);
         }
 
-        // список атрибутов групп для чтения
-        String groupFrom[] = new String[] {"groupName"};
-        // список ID view-элементов, в которые будет помещены атрибуты групп
-        int groupTo[] = new int[] {android.R.id.text1};
+        groupData = menu.GetGroupData();
+        String groupFrom[] = new String[] {GROUP_NAME};
+        int groupTo[] = new int[] {R.id.textGroup};
+        childData = menu.GetChildData();
+        String childFrom[] = new String[] {DISH_NAME, DISH_PRICE, DISH_PICT};
+        int childTo[] = new int[] {R.id.dishName, R.id.dishPrice, R.id.dishPicture};
 
-
-        // создаем коллекцию для коллекций элементов
-        childData = new ArrayList<ArrayList<Map<String, String>>>();
-
-        // создаем коллекцию элементов для первой группы
-        childDataItem = new ArrayList<Map<String, String>>();
-        // заполняем список атрибутов для каждого элемента
-        for (String dish : FirstDishes) {
-            m = new HashMap<String, String>();
-            m.put("dishName", dish);
-            m.put("dishPrice", "kek");
-//            m.put("dishPicture", "@drawable/kek");
-            childDataItem.add(m);
-        }
-        // добавляем в коллекцию коллекций
-        childData.add(childDataItem);
-
-        // создаем коллекцию элементов для второй группы
-        childDataItem = new ArrayList<Map<String, String>>();
-        for (String dish : SecondDishes) {
-            m = new HashMap<String, String>();
-            m.put("dishName", dish);
-            m.put("dishPrice", "kek1");
-//            m.put("dishPicture", "@drawable/kek");
-            childDataItem.add(m);
-        }
-        childData.add(childDataItem);
-
-        // создаем коллекцию элементов для третьей группы
-        childDataItem = new ArrayList<Map<String, String>>();
-        for (String dish : Dessert) {
-            m = new HashMap<String, String>();
-            m.put("dishName", dish);
-            m.put("dishPrice", "kek2");
-//            m.put("dishPicture", "@drawable/lol");
-            childDataItem.add(m);
-        }
-        childData.add(childDataItem);
-
-        // список атрибутов элементов для чтения
-        String childFrom[] = new String[] {"dishName", "dishPrice"};
-        // список ID view-элементов, в которые будет помещены атрибуты элементов
-        int childTo[] = new int[] {R.id.dishName, R.id.dishPrice};
-
-        SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(
+        ExpListAdapter adapter = new ExpListAdapter(
                 this,
                 groupData,
-                android.R.layout.simple_expandable_list_item_1,
+                R.layout.menu_group_layout,
                 groupFrom,
                 groupTo,
                 childData,
