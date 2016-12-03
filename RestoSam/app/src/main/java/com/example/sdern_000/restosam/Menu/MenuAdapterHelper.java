@@ -1,21 +1,16 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Menu;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.ViewGroup;
+import android.content.Context;
+
+import com.example.sdern_000.restosam.Dish;
+import com.example.sdern_000.restosam.ExpListAdapter;
+import com.example.sdern_000.restosam.Menu.Menu;
+import com.example.sdern_000.restosam.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
-
-public class MenuActivity extends AppCompatActivity {
-
+public class MenuAdapterHelper {
     final String GROUP_NAME = "groupName";
     final String DISH_NAME = "dishName";
     final String DISH_PRICE = "dishPrice";
@@ -37,15 +32,16 @@ public class MenuActivity extends AppCompatActivity {
     ArrayList<Map<String, String>> groupData;
     ArrayList<ArrayList<Map<String, Object>>> childData;
 
-    ExpandableListView elvMain;
+    Context ctx;
+    Menu menu;
+    MenuAdapterHelper(Context _ctx) {
+        ctx = _ctx;
+    }
 
-    /** Called when the activity is first created. */
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTitle(R.string.menu_header);
-        setContentView(R.layout.activity_menu);
+    ExpListAdapter adapter;
 
-        Menu menu = new Menu(groups);
+    ExpListAdapter getAdapter() {
+        menu = new Menu(groups);
         for (int i = 0 ; i < FirstDishes.length; i++) {
             Dish dish = new Dish(FirstDishes[i], FirstDishesPrices[i], FirstDishesPictures[i] );
             menu.AddDish("Основные блюда", dish);
@@ -66,8 +62,8 @@ public class MenuActivity extends AppCompatActivity {
         String childFrom[] = new String[] {DISH_NAME, DISH_PRICE, DISH_PICT};
         int childTo[] = new int[] {R.id.dishName, R.id.dishPrice, R.id.dishPicture};
 
-        ExpListAdapter adapter = new ExpListAdapter(
-                this,
+        adapter = new ExpListAdapter(
+                ctx,
                 groupData,
                 R.layout.menu_group_layout,
                 groupFrom,
@@ -77,7 +73,26 @@ public class MenuActivity extends AppCompatActivity {
                 childFrom,
                 childTo);
 
-        elvMain = (ExpandableListView) findViewById(R.id.elvMain);
-        elvMain.setAdapter(adapter);
+        return adapter;
+    }
+
+    String getGroupText(int groupPos) {
+        return ((Map<String,String>)(adapter.getGroup(groupPos))).get(GROUP_NAME);
+    }
+
+    ArrayList<Object> getChildText(int groupPos, int childPos) {
+        ArrayList<Object> attr = new ArrayList<Object>();
+        attr.add(((Map<String,String>)(adapter.getChild(groupPos, childPos))).get(DISH_NAME));
+        attr.add(((Map<String,String>)(adapter.getChild(groupPos, childPos))).get(DISH_PRICE));
+        attr.add(((Map<String,String>)(adapter.getChild(groupPos, childPos))).get(DISH_PICT));
+        return attr;
+    }
+
+    String getGroupChildText(int groupPos, int childPos) {
+        return getGroupText(groupPos) + " " +  getChildText(groupPos, childPos);
+    }
+
+    public Dish GetDish(String name) {
+        return menu.GetDish(name);
     }
 }

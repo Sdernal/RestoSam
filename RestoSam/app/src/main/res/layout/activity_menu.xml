@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_menu"
     android:layout_width="match_parent"
@@ -8,14 +9,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sdern_000.restosam.MenuActivity">
+    android:orientation="vertical"
+    tools:context="com.example.sdern_000.restosam.Menu.MenuActivity">
 
-    <ExpandableListView
-        android:id="@+id/elvMain"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </ExpandableListView>
-</RelativeLayout>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+            <ExpandableListView
+                android:id="@+id/elvMain"
+                android:layout_width="match_parent"
+                android:layout_weight="4.60"
+                android:layout_height="450dp">
+            </ExpandableListView>
+
+                <Button
+                    android:id = "@+id/order_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Оформить заказ"
+                    android:background="@color/buttonColor"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

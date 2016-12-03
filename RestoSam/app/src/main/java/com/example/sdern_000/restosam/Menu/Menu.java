@@ -1,4 +1,6 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Menu;
+
+import com.example.sdern_000.restosam.Dish;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,4 +63,7 @@ public class Menu {
         return childData;
     }
 
+    public Dish GetDish(String name) {
+        return dishMap.get(name);
+    }
 }
