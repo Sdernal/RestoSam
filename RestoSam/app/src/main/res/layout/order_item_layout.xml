@@ -8,7 +8,7 @@
     >
     <ImageView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/dishPicture"
+        android:id="@+id/order_item_picture"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:src= "@drawable/kek"
@@ -17,7 +17,7 @@
     </ImageView>
 
     <TextView
-        android:id="@+id/dishName"
+        android:id="@+id/order_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
@@ -28,7 +28,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/dishPrice"
+        android:id="@+id/order_item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
+import com.example.sdern_000.restosam.Menu.MenuActivity;
+
 public class SecondActivity extends AppCompatActivity {
 
     TextView editText;

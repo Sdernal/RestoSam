@@ -16,10 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity" />
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".Menu.MenuActivity" />
         <activity
             android:name=".RestaurantActivity"
-            android:label="@string/title_activity_restaurant"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -30,6 +29,7 @@
         <activity android:name=".SearchRestaurantActivity" />
         <activity android:name=".RestaurantSearchResultActivity" />
         <activity android:name=".BookActivity"></activity>
+        <activity android:name=".Order.OrderActivity"></activity>
     </application>
 
 </manifest>
