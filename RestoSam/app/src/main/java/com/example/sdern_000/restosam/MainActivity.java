@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
-    public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     Button menu_button;
+    Button book_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +22,28 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         menu_button = (Button) findViewById(R.id.menu_button);
         menu_button.setOnClickListener(this);
+
+        book_button = (Button) findViewById(R.id.book_button);
+        book_button.setOnClickListener(this);
     }
 
 
     public void OnButtonClick(View view) {
-        Intent intent = new Intent(this, RestaurantActivity.class);
+        Intent intent = new Intent(this, SearchRestaurantActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.menu_button:
-                Intent intent = new Intent(this, MenuActivity.class);
+                intent = new Intent(this, MenuActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.book_button:
+                intent = new Intent(this, BookActivity.class);
                 startActivity(intent);
                 break;
         }

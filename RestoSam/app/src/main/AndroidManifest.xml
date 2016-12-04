@@ -26,6 +26,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sdern_000.restosam.MainActivity" />
         </activity>
+        <activity android:name=".ExtendedSearchRestaurantActivity" />
+        <activity android:name=".SearchRestaurantActivity" />
+        <activity android:name=".RestaurantSearchResultActivity" />
+        <activity android:name=".BookActivity"></activity>
     </application>
 
 </manifest>
