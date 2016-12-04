@@ -17,19 +17,13 @@
         </activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".Menu.MenuActivity" />
-        <activity
-            android:name=".RestaurantActivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sdern_000.restosam.MainActivity" />
-        </activity>
+        <activity android:name=".RestaurantActivity" />
         <activity android:name=".ExtendedSearchRestaurantActivity" />
         <activity android:name=".SearchRestaurantActivity" />
         <activity android:name=".RestaurantSearchResultActivity" />
-        <activity android:name=".BookActivity"></activity>
-        <activity android:name=".Order.OrderActivity"></activity>
+        <activity android:name=".BookActivity" />
+        <activity android:name=".Order.OrderActivity" />
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>

@@ -2,26 +2,28 @@ package com.example.sdern_000.restosam.Order;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sdern_000.restosam.Dish;
-import com.example.sdern_000.restosam.Order.Order;
 import com.example.sdern_000.restosam.R;
-import com.example.sdern_000.restosam.RestaurantListAdapter;
+import com.example.sdern_000.restosam.ResultActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
+
+import static com.example.sdern_000.restosam.Order.Order.bufferOrder;
+import static com.example.sdern_000.restosam.Order.Order.orderSet;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<String> dishnames;
     ArrayList<Integer> dishprices;
     ArrayList<Integer> dishpictures;
+    String restaurantName;
     Order order;
     final int DIALOG = 1;
     LinearLayout view;
@@ -37,8 +40,11 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Заказ");
         setContentView(R.layout.activity_order);
-        String orderName = getIntent().getExtras().getString("order");
-        order = Order.orderMap.get(orderName);
+        if (orderSet == null) {
+            orderSet = new HashSet<>();
+        }
+        restaurantName = getIntent().getStringExtra("name");
+        order = bufferOrder;
         dishes = order.GetDishes();
         dishnames =  new ArrayList<String>();
         dishprices = new ArrayList<Integer>();
@@ -122,9 +128,11 @@ public class OrderActivity extends AppCompatActivity {
             switch (which) {
                 // положительная кнопка
                 case Dialog.BUTTON_POSITIVE:
-                    Toast.makeText(getApplicationContext(), "Заказ передан в ресторан", Toast.LENGTH_SHORT).show();
-                    order.Clear();
-                    UpdateOrder();
+                    orderSet.add(order);
+                    Intent intent = new Intent(OrderActivity.this, ResultActivity.class);
+                    intent.putExtra("name", restaurantName);
+                    intent.putExtra("result", "order");
+                    startActivity(intent);
                     break;
                 case Dialog.BUTTON_NEGATIVE:
                     break;

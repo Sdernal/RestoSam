@@ -126,4 +126,8 @@ public class RestaurantListAdapter extends ArrayAdapter<String> implements Filte
     public Filter getFilter() {
         return filter;
     }
+
+    public Restaurant getRestaurant(int position) {
+        return filteredRestaurants.get(position);
+    }
 }

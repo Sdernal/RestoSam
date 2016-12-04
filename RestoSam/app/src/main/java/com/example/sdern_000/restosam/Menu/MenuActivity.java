@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.view.View;
 import android.widget.Button;
@@ -24,24 +23,29 @@ import com.example.sdern_000.restosam.Order.Order;
 import com.example.sdern_000.restosam.Order.OrderActivity;
 import com.example.sdern_000.restosam.R;
 
+import static com.example.sdern_000.restosam.Order.Order.bufferOrder;
+
 
 public class MenuActivity extends AppCompatActivity {
 
     ExpandableListView elvMain;
     MenuAdapterHelper ah;
     ExpListAdapter adapter;
+    String restaurantName;
     int btn;
     LinearLayout view;
-    TextView tvCount;
     ArrayList<Object> attr;
     Order order;
     final int DIALOG = 1;
-    /** Called when the activity is first created. */
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.menu_header);
         setContentView(R.layout.activity_menu);
+        Intent intent = getIntent();
+        restaurantName = intent.getStringExtra("name");
         order = new Order();
+        order.setRestaurantName(restaurantName);
         ah = new MenuAdapterHelper(this);
         adapter = ah.getAdapter();
 
@@ -63,10 +67,9 @@ public class MenuActivity extends AppCompatActivity {
         View.OnClickListener btlistener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Order.orderMap = new HashMap<String, Order>();
-                Order.orderMap.put("Order", order);
+                bufferOrder = order;
                 Intent OrderIntent = new Intent(MenuActivity.this, OrderActivity.class);
-                OrderIntent.putExtra("order", "Order");
+                OrderIntent.putExtra("name", restaurantName);
                 startActivity(OrderIntent);
             }
         };

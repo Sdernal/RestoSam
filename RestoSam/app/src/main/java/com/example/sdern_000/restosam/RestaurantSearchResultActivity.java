@@ -44,9 +44,10 @@ public class RestaurantSearchResultActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String Slecteditem = "" + position;
-                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(RestaurantSearchResultActivity.this, RestaurantActivity.class);
+                intent.putExtra("name", adapter.getRestaurant(position).getName());
+                intent.putExtra("logo", adapter.getRestaurant(position).getImageId());
+                startActivity(intent);
             }
         });
         list.setTextFilterEnabled(true);

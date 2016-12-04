@@ -1,21 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ImageView
-        android:id = "@+id/main_picture"
+
+    <TextView
+        android:id="@+id/result_text"
         android:layout_width="match_parent"
-        android:layout_height="380dp" />
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_margin="@dimen/activity_vertical_margin"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="10dp"
-        android:id="@+id/menu_button"
-        android:text="Посмотреть меню"
+        android:id="@+id/optional_button"
         android:background="@color/buttonColor"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -26,10 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="10dp"
-        android:id="@+id/book_button"
-        android:text="Забронировать столик"
+        android:id="@+id/back_button"
+        android:text="К списку ресторанов"
         android:background="@color/buttonColor"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textColor="#000000" />
+
+
 </LinearLayout>

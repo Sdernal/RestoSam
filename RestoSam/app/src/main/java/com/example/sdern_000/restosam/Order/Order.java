@@ -5,6 +5,7 @@ import com.example.sdern_000.restosam.Dish;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Sdern_000 on 03.12.2016.
@@ -12,9 +13,12 @@ import java.util.Map;
 
 public class Order {
 
-    public static Map<String, Order> orderMap;
+    public static Set<Order> orderSet;
+    public static Order bufferOrder;
 
-    Map<String,Dish> dishes;
+    private Map<String,Dish> dishes;
+    private String restaurantName;
+
     public Order() {
         dishes = new HashMap<String,Dish>();
     }
@@ -33,5 +37,9 @@ public class Order {
 
     public void Clear() {
         dishes.clear();
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }

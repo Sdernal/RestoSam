@@ -1,5 +1,6 @@
 package com.example.sdern_000.restosam;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AlertDialog;
@@ -19,22 +20,31 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+
+import static com.example.sdern_000.restosam.Book.bookSet;
+import static com.example.sdern_000.restosam.Book.bufferBook;
 
 public class BookActivity extends AppCompatActivity {
 
     List<String> dates;
     List<String> places;
+    String restaurantName;
     Random rand;
     View chosenPlace;
     int[] colors;
-    Date time;
+    Book book;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+        if (bookSet == null) {
+            bookSet = new HashSet<>();
+        }
+        restaurantName = getIntent().getStringExtra("name");
         final View dialogView = View.inflate(this, R.layout.date_time_picker, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         dates = new ArrayList<>();
@@ -62,7 +72,9 @@ public class BookActivity extends AppCompatActivity {
 
                 SimpleDateFormat format = new SimpleDateFormat( "hh:mm" );
                 try {
-                    time = format.parse(dates.get(dateSpinner.getSelectedItemPosition()) );
+                    Date time = format.parse(dates.get(dateSpinner.getSelectedItemPosition()) );
+                    book = new Book(time);
+                    book.setRestaurantName(restaurantName);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -115,8 +127,16 @@ public class BookActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (chosenPlace == null) {
                     Toast.makeText(getApplicationContext(), "Выберите столик.", Toast.LENGTH_SHORT).show();
+                } else {
+                    bufferBook = book;
+                    bookSet.add(book);
+                    Intent intent = new Intent(BookActivity.this, ResultActivity.class);
+                    intent.putExtra("name", restaurantName);
+                    intent.putExtra("result", "book");
+                    startActivity(intent);
                 }
             }
         });
+        setTitle("Бронирование столика");
     }
 }
