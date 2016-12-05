@@ -1,12 +1,14 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Restaurant;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.example.sdern_000.restosam.R;
+import com.example.sdern_000.restosam.Restaurant.RestaurantSearchResultActivity;
 
 import java.util.ArrayList;
 import java.util.List;

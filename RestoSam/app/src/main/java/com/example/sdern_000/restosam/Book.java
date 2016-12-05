@@ -13,7 +13,7 @@ import java.util.Set;
 public class Book {
     private Date date;
     private String restaurantName;
-    public static Set<Book> bookSet;
+//    public static Set<Book> bookSet;
     public static Book bufferBook;
 
     Book(Date date) {

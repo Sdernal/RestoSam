@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Order {
 
-    public static Set<Order> orderSet;
+//    public static Set<Order> orderSet;
     public static Order bufferOrder;
 
     private Map<String,Dish> dishes;

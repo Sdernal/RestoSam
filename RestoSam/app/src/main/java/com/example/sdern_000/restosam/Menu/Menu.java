@@ -54,7 +54,7 @@ public class Menu {
                 Dish dish_ = dishMap.get(child);
                 HashMap<String, Object> m = new HashMap<String, Object>();
                 m.put(DISH_NAME, dish_.GetName());
-                m.put(DISH_PRICE, "цена: " + dish_.GetPrice().toString());
+                m.put(DISH_PRICE, "цена: " + dish_.GetPrice().toString() + "р");
                 m.put(DISH_PICT, dish_.GetPictureId());
                 childDataItem.add(m);
             }

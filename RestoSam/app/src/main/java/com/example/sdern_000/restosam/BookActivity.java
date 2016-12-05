@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
-import static com.example.sdern_000.restosam.Book.bookSet;
 import static com.example.sdern_000.restosam.Book.bufferBook;
 
 public class BookActivity extends AppCompatActivity {
@@ -36,13 +35,14 @@ public class BookActivity extends AppCompatActivity {
     View chosenPlace;
     int[] colors;
     Book book;
-
+    DataBase dataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
-        if (bookSet == null) {
-            bookSet = new HashSet<>();
+        dataBase = DataBase.getInstance();
+        if (!dataBase.BooksExist()) {
+            dataBase.BooksInitialize();
         }
         restaurantName = getIntent().getStringExtra("name");
         final View dialogView = View.inflate(this, R.layout.date_time_picker, null);
@@ -129,7 +129,8 @@ public class BookActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Выберите столик.", Toast.LENGTH_SHORT).show();
                 } else {
                     bufferBook = book;
-                    bookSet.add(book);
+                    dataBase.AddBook(book);
+//                    bookSet.add(book);
                     Intent intent = new Intent(BookActivity.this, ResultActivity.class);
                     intent.putExtra("name", restaurantName);
                     intent.putExtra("result", "book");

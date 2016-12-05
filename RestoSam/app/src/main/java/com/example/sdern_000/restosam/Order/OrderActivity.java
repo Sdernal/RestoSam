@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sdern_000.restosam.DataBase;
 import com.example.sdern_000.restosam.Dish;
 import com.example.sdern_000.restosam.R;
 import com.example.sdern_000.restosam.ResultActivity;
@@ -23,7 +24,6 @@ import java.util.HashSet;
 import java.util.Map;
 
 import static com.example.sdern_000.restosam.Order.Order.bufferOrder;
-import static com.example.sdern_000.restosam.Order.Order.orderSet;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -35,13 +35,16 @@ public class OrderActivity extends AppCompatActivity {
     Order order;
     final int DIALOG = 1;
     LinearLayout view;
+    DataBase dataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Заказ");
         setContentView(R.layout.activity_order);
-        if (orderSet == null) {
-            orderSet = new HashSet<>();
+
+        dataBase = DataBase.getInstance();
+        if (!dataBase.OrdersExist()) {
+            dataBase.OrdersInitialize();
         }
         restaurantName = getIntent().getStringExtra("name");
         order = bufferOrder;
@@ -128,7 +131,8 @@ public class OrderActivity extends AppCompatActivity {
             switch (which) {
                 // положительная кнопка
                 case Dialog.BUTTON_POSITIVE:
-                    orderSet.add(order);
+                    dataBase.AddOrder(order);
+//                    orderSet.add(order);
                     Intent intent = new Intent(OrderActivity.this, ResultActivity.class);
                     intent.putExtra("name", restaurantName);
                     intent.putExtra("result", "order");

@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.view.View.OnClickListener;
 
-import com.example.sdern_000.restosam.Menu.MenuActivity;
+import com.example.sdern_000.restosam.Restaurant.SearchRestaurantActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DataBase dataBase = DataBase.getInstance();
+        dataBase.Load();
     }
 
 

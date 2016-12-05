@@ -15,12 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
         <activity android:name=".Menu.MenuActivity" />
-        <activity android:name=".RestaurantActivity" />
-        <activity android:name=".ExtendedSearchRestaurantActivity" />
-        <activity android:name=".SearchRestaurantActivity" />
-        <activity android:name=".RestaurantSearchResultActivity" />
+        <activity android:name=".Restaurant.RestaurantActivity" />
+        <activity android:name=".Restaurant.ExtendedSearchRestaurantActivity" />
+        <activity android:name=".Restaurant.SearchRestaurantActivity" />
+        <activity android:name=".Restaurant.RestaurantSearchResultActivity" />
         <activity android:name=".BookActivity" />
         <activity android:name=".Order.OrderActivity" />
         <activity android:name=".ResultActivity"></activity>

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sdern_000.restosam.Menu.MenuActivity;
+import com.example.sdern_000.restosam.Restaurant.SearchRestaurantActivity;
 
 import static com.example.sdern_000.restosam.Book.bufferBook;
 import static com.example.sdern_000.restosam.Order.Order.bufferOrder;

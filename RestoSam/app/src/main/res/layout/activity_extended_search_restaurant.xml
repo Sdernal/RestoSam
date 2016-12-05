@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sdern_000.restosam.ExtendedSearchRestaurantActivity">
+    tools:context="com.example.sdern_000.restosam.Restaurant.ExtendedSearchRestaurantActivity">
 
     <TextView
         android:id="@+id/price_text"

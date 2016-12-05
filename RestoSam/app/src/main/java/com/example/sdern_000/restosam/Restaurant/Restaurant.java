@@ -1,6 +1,9 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Restaurant;
+
+import com.example.sdern_000.restosam.Menu.Menu;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita Rykov on 02.12.2016.
@@ -9,6 +12,7 @@ import java.util.List;
 public class Restaurant {
     private String name;
     private Integer imageId;
+    private Menu menu;
 
     public Restaurant(String name, Integer imageId) {
         this.name = name;
@@ -30,6 +34,12 @@ public class Restaurant {
 
     public void setImageId(Integer imageId) {
         this.imageId = imageId;
+    }
+
+    public void setMenu(Menu menu) { this.menu = menu;}
+
+    public Menu getMenu() {
+        return menu;
     }
 
     @Override

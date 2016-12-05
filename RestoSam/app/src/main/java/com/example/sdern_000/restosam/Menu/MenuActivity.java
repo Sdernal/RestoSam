@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sdern_000.restosam.ExpListAdapter;
 import com.example.sdern_000.restosam.Order.Order;
 import com.example.sdern_000.restosam.Order.OrderActivity;
 import com.example.sdern_000.restosam.R;
@@ -30,7 +29,7 @@ public class MenuActivity extends AppCompatActivity {
 
     ExpandableListView elvMain;
     MenuAdapterHelper ah;
-    ExpListAdapter adapter;
+    MenuAdapter adapter;
     String restaurantName;
     int btn;
     LinearLayout view;
@@ -46,7 +45,7 @@ public class MenuActivity extends AppCompatActivity {
         restaurantName = intent.getStringExtra("name");
         order = new Order();
         order.setRestaurantName(restaurantName);
-        ah = new MenuAdapterHelper(this);
+        ah = new MenuAdapterHelper(this, restaurantName);
         adapter = ah.getAdapter();
 
         elvMain = (ExpandableListView) findViewById(R.id.elvMain);

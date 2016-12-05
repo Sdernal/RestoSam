@@ -1,4 +1,4 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Restaurant;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.sdern_000.restosam.BookActivity;
 import com.example.sdern_000.restosam.Menu.MenuActivity;
+import com.example.sdern_000.restosam.R;
 
 public class RestaurantActivity extends AppCompatActivity implements View.OnClickListener {
     String name;
@@ -29,7 +31,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
         int imageId = intent.getIntExtra("logo", 0);
         imageView.setImageResource(imageId);
 
-        String name = intent.getStringExtra("name");
+        name = intent.getStringExtra("name");
         setTitle(name);
     }
 

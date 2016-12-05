@@ -1,4 +1,4 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Restaurant;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -9,6 +9,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.sdern_000.restosam.DataBase;
+import com.example.sdern_000.restosam.R;
+import com.example.sdern_000.restosam.Restaurant.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,23 +30,15 @@ public class RestaurantListAdapter extends ArrayAdapter<String> implements Filte
 
     private static List<Restaurant> restaurants;
 
-    private static final String[] itemNames = {
-            "chicks",
-            "circles",
-            "foodie",
-            "grill",
-            "seafood"
-    };
-    private static final Integer[] imageIds = {
-            R.drawable.chicks,
-            R.drawable.circles,
-            R.drawable.foodie,
-            R.drawable.grill,
-            R.drawable.seafood
-    };
+    private String[] itemNames;
 
+    private Integer[] imageIds;
+    DataBase dataBase;
     public RestaurantListAdapter(Activity context) {
-        super(context, R.layout.list_item, itemNames);
+        super(context, R.layout.list_item, 0);
+        dataBase = DataBase.getInstance();
+        itemNames = dataBase.GetRestaurantsNames();
+        imageIds = dataBase.GetRestaurantsImages();
         this.context = context;
         if (restaurants == null) {
             restaurants = new ArrayList<>();

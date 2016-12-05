@@ -1,4 +1,4 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Menu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,18 +19,18 @@ import android.widget.ImageView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
-public class ExpListAdapter extends
+public class MenuAdapter extends
         SimpleExpandableListAdapter {
 
     private List<? extends List<? extends Map<String, ?>>> mChildData;
     private String[] mChildFrom;
     private int[] mChildTo;
 
-    public ExpListAdapter(Context context,
-                                   List<? extends Map<String, ?>> groupData, int groupLayout,
-                                   String[] groupFrom, int[] groupTo,
-                                   List<? extends List<? extends Map<String, ?>>> childData,
-                                   int childLayout, String[] childFrom, int[] childTo) {
+    public MenuAdapter(Context context,
+                       List<? extends Map<String, ?>> groupData, int groupLayout,
+                       String[] groupFrom, int[] groupTo,
+                       List<? extends List<? extends Map<String, ?>>> childData,
+                       int childLayout, String[] childFrom, int[] childTo) {
         super(context, groupData, groupLayout, groupFrom, groupTo,
                 childData, childLayout, childFrom, childTo);
 

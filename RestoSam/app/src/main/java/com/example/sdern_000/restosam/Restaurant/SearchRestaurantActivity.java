@@ -1,4 +1,4 @@
-package com.example.sdern_000.restosam;
+package com.example.sdern_000.restosam.Restaurant;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.sdern_000.restosam.R;
 
 public class SearchRestaurantActivity extends AppCompatActivity {
     ListView list;
